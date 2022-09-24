@@ -106,14 +106,14 @@ $("#menu-principal-btn").on("click", () => {
 })
 
 $("#shop-btn").on("click", () => {
-    $('#backg').attr('src', '/Client/assets/shop/wallpaper.png');
+    $('#backg').attr('src', 'https://ik.imagekit.io/mbo2hq52r/assets/wallpaper_JTNJAeMQJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045675697');
     $("#menu-principal").fadeOut(400)
     $("#leaderboard").fadeOut(400)
     $("#shop").fadeIn(400)
 })
 
 $("#leaderboard-btn").on('click', () => {
-    $('#backg').attr('src', '/Client/assets/shop/wallpaper.png');
+    $('#backg').attr('src', 'https://ik.imagekit.io/mbo2hq52r/assets/wallpaper_JTNJAeMQJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045675697');
 })
 
 $('#player-info').on('click', () => {

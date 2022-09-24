@@ -34,7 +34,7 @@ export class Shop {
         $(`${this.bonusId}`).append(`
             <button data-tooltip="${description}" style="background-image:url('${imgLink}');" id="items-btn" type="button" value="${productId}">
                 <p>${name}</p>
-                <h3>${price}<img style="width:10%;margin-bottom: -3.2%;" src="/Client/assets/shop/coin.png" alt=""></h3>
+                <h3>${price}<img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
             </button>
         `)
         this.tooltip()
