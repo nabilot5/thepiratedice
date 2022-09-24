@@ -76,7 +76,7 @@ export class Login {
         document.getElementById("signup-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/api/auth/signup",
+                url: "https://shielded-sea-87437.herokuapp.com/api/auth/signup",
                 data: {
                     "pseudo": this.pseudo,
                     "email": this.email,
