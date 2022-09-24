@@ -29,7 +29,7 @@ export class Inventory {
     getInventory() {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/inventory/myInventory",
+            url: "https://shielded-sea-87437.herokuapp.com/api/inventory/myInventory",
             data: {
                 pseudo: localStorage.getItem("pseudo"),
                 password: localStorage.getItem("password"),

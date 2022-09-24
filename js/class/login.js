@@ -12,7 +12,7 @@ export class Login {
         if (pseudo !== null && password !== null) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/api/auth/autoconnect",
+                url: "https://shielded-sea-87437.herokuapp.com/api/auth/autoconnect",
                 data: {
                     "pseudo": pseudo,
                     "password": password
@@ -44,7 +44,7 @@ export class Login {
         document.getElementById("signin-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/api/auth/signin",
+                url: "https://shielded-sea-87437.herokuapp.com/api/auth/signin",
                 data: {
                     "pseudo": this.pseudo,
                     "password": this.password

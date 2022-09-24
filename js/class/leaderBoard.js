@@ -14,7 +14,7 @@ export class Leaderboard {
         $(this.btnId).on("click", () => {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/api/rating/all",
+                url: "https://shielded-sea-87437.herokuapp.com/api/rating/all",
                 success: function (response) {
                     this.add(response)
 

@@ -7,7 +7,7 @@ export class Shop {
     showBonus() {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/shop/category",
+            url: "https://shielded-sea-87437.herokuapp.com/api/shop/category",
             data: { category: "Bonus" },
             dataType: "json",
             success: function (response) {
@@ -47,7 +47,7 @@ export class Shop {
 
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost:8080/api/shop/basicPurchase",
+                    url: "https://shielded-sea-87437.herokuapp.com/api/shop/basicPurchase",
                     data: {
                         pseudo: localStorage.getItem("pseudo"),
                         password: localStorage.getItem("password"),
