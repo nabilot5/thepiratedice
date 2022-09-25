@@ -12,6 +12,7 @@ export class Login {
         if (pseudo !== null && password !== null) {
             $.ajax({
                 type: "POST",
+                // url: "http://localhost:8080/api/auth/autoconnect",
                 url: "https://shielded-sea-87437.herokuapp.com/api/auth/autoconnect",
                 data: {
                     "pseudo": pseudo,
@@ -44,6 +45,7 @@ export class Login {
         document.getElementById("signin-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
+                // url: "http://localhost:8080/api/auth/signin",
                 url: "https://shielded-sea-87437.herokuapp.com/api/auth/signin",
                 data: {
                     "pseudo": this.pseudo,
@@ -76,6 +78,7 @@ export class Login {
         document.getElementById("signup-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
+                // url: "http://localhost:8080/api/auth/signup",
                 url: "https://shielded-sea-87437.herokuapp.com/api/auth/signup",
                 data: {
                     "pseudo": this.pseudo,

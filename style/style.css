@@ -571,14 +571,14 @@ td:first-child {
     background-size: 100% 100%;
 }
 
-#coin-items, #icons-items, #coin-items, #emots-items, #skin-items,#bonus-items {
+#coin-items, #icons-items, #coin-items, #emots-items, #skin-items,#bonus-items, #inventory-menu {
     padding: 4%;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows:1fr;
     grid-gap: 20%;
 }
 
-#coin-items button, #icons-items button, #coin-items button, #emots-items button, #skin-items button, #bonus-items button {
+#coin-items button, #icons-items button, #coin-items button, #emots-items button, #skin-items button, #bonus-items button, #inventory-menu button {
     text-align: center;
     align-items: center;
     border: 2px solid #b6422d;
@@ -587,44 +587,29 @@ td:first-child {
     height: 200px;
 }
 
-#coin-items p, #icons-items p, #coin-items p, #emots-items p, #skin-items p,#bonus-items p {
+#coin-items p, #icons-items p, #coin-items p, #emots-items p, #skin-items p,#bonus-items p, #inventory-menu p {
     color: #fff;
     margin-top: 80%;
 }
 
-#coin-items h3, #icons-items h3, #coin-items h3, #emots-items h3, #skin-items h3, #bonus-items h3 {
+#coin-items h3, #icons-items h3, #coin-items h3, #emots-items h3, #skin-items h3, #bonus-items h3, #inventory-menu h3 {
     align-items: center;
     text-align: center;
     color: #fff;
     margin-top: -5%;
 }
 
-.tooltip p {
-    margin-bottom: 5px;
-}
-
-.tooltip button {
-    position: absolute;
-    right : 0;
-    top : 0;
-}
-
 .tooltip {
     position : absolute;
     padding : 1em;
-    z-index : 2;
-    display :inline-block;
-    border: 1px solid #333;
-    border-radius:4px;
+    z-index : 45;
+    border: 2px solid #333;
+    border-radius: 2%;
     color : #fff;
-    font : italic 14px/1.3 sans-serif;
     width: 15%;
     text-align : center;
-    background : rgba(201, 171, 0, 0.3);
-    box-shadow : 3px 3px 3px rgba(201, 171, 0, 0.3);
-    font-size : 13px;
-    opacity : 100%;
-    overflow-y : auto;
+    background : rgba(0, 0, 0, 0.3);
+    font-size : 20px;
 }
 
 
@@ -1042,7 +1027,7 @@ td:first-child {
     position: absolute;
     z-index: 40;
     width: 65%;
-    height: 75%;
+    height: 60%;
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 55%, rgba(119, 13, 13, 1) 100%);
     border: 2px solid rgb(255, 136, 0);
@@ -1068,6 +1053,9 @@ td:first-child {
 }
 
 #inventory-close {
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 15%;
     min-width: 40px;
 }

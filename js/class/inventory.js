@@ -29,6 +29,7 @@ export class Inventory {
     getInventory() {
         $.ajax({
             type: "POST",
+            // url: "http://localhost:8080/api/inventory/myInventory",
             url: "https://shielded-sea-87437.herokuapp.com/api/inventory/myInventory",
             data: {
                 pseudo: localStorage.getItem("pseudo"),
@@ -49,7 +50,7 @@ export class Inventory {
     addAllBonus(allBonus) {
         let html = ""
 
-        $(`${this.inventoryItems} ul`).html(html)
+        $(`${this.inventoryItems}`).html(html)
 
         allBonus.forEach(bonus => {
             html += this.addBonus(
@@ -61,20 +62,15 @@ export class Inventory {
             )
         })
 
-        $(`${this.inventoryItems} ul`).append(html)
+        $(`${this.inventoryItems}`).append(html)
     }
 
     addBonus(imgLink, quantity, name, description, productId) {
         return `
-            <li class="shop-cart">
-                <div>
-                    <img src="${imgLink}" alt="">
-                    <p>${quantity}</p>
-                </div>
+            <button data-tooltip="${description}" style="background-image:url('${imgLink}');" id="items-btn" type="button" value="${productId}">
                 <p>${name}</p>
-                <p>${description}</p>
-                <button type="button" value="${productId}">Utiliser</button>
-            </li>
+                <h3>${quantity}</h3>
+            </button>
         `
     }
 
@@ -86,6 +82,7 @@ export class Inventory {
                 )
             })
         })
+        this.tooltip()
     }
 
     removeBonusChoice() {
@@ -96,6 +93,58 @@ export class Inventory {
                     .parent()
                     .removeClass("case-hover")
             })
+        }
+    }
+
+    tooltip() {
+        let tooltip;
+        function showTooltip(anchorElem, html) {
+            let tooltipElem = document.createElement('div');
+            tooltipElem.className = 'tooltip';
+            tooltipElem.innerHTML = html;
+            document.body.append(tooltipElem);
+
+            let coords = anchorElem.getBoundingClientRect();
+
+            let left = coords.left + (anchorElem.offsetWidth - tooltipElem.offsetWidth) / 2;
+            if (left < 0) left = 0;
+
+            let top = coords.top - tooltipElem.offsetHeight - 5;
+            if (top < 0) top = coords.top + anchorElem.offsetHeight + 5;
+
+            tooltipElem.style.left = left + 'px';
+            tooltipElem.style.top = top + 'px';
+
+            return tooltipElem;
+        }
+
+        document.onmouseover = function (event) {
+            let ourElement = event.target.closest('[data-tooltip]');
+
+            if (!ourElement) return;
+            tooltip = showTooltip(ourElement, ourElement.dataset.tooltip);
+        }
+
+        document.onmouseout = function () {
+            if (tooltip) {
+                tooltip.remove();
+                tooltip = false;
+            }
+        }
+
+        document.onkeydown = function (evt) {
+            // Sorting table
+            evt = evt || window.event;
+            var isEscape = false;
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc");
+            }
+
+            if (isEscape) {
+                $.each($('.tooltip'), function () {
+                    $(this).remove();
+                });
+            }
         }
     }
 }

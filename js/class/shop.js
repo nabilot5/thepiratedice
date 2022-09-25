@@ -7,6 +7,7 @@ export class Shop {
     showBonus() {
         $.ajax({
             type: "POST",
+            // url: "http://localhost:8080/api/shop/category",
             url: "https://shielded-sea-87437.herokuapp.com/api/shop/category",
             data: { category: "Bonus" },
             dataType: "json",
@@ -47,6 +48,7 @@ export class Shop {
 
                 $.ajax({
                     type: "POST",
+                    // url: "http://localhost:8080/api/shop/basicPurchase",
                     url: "https://shielded-sea-87437.herokuapp.com/api/shop/basicPurchase",
                     data: {
                         pseudo: localStorage.getItem("pseudo"),
@@ -103,6 +105,21 @@ export class Shop {
             if (tooltip) {
                 tooltip.remove();
                 tooltip = false;
+            }
+        }
+
+        document.onkeydown = function (evt) {
+            // Sorting table
+            evt = evt || window.event;
+            var isEscape = false;
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc");
+            }
+
+            if (isEscape) {
+                $.each($('.tooltip'), function () {
+                    $(this).remove();
+                });
             }
         }
     }
