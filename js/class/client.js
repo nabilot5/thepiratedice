@@ -5,8 +5,8 @@ export class Client {
         this.local = local
         this.game = game
         this.socket
-        this.localUrl = "http://nabilot.alwaysdata.net/players"
-        this.servUrl = "http://nabilot.alwaysdata.net/players"
+        this.localUrl = "https://nabilot.alwaysdata.net/players"
+        this.servUrl = "https://nabilot.alwaysdata.net/players"
         this.loader = new Loader()
     }
 
