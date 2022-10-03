@@ -5,9 +5,8 @@ export class Client {
         this.local = local
         this.game = game
         this.socket
-        this.localUrl = "https://shielded-sea-87437.herokuapp.com/players"
-        // this.localUrl = "http://localhost:8080/players"
-        this.servUrl = "https://shielded-sea-87437.herokuapp.com/players"
+        this.localUrl = "http://nabilot.alwaysdata.net/players"
+        this.servUrl = "http://nabilot.alwaysdata.net/players"
         this.loader = new Loader()
     }
 
@@ -21,8 +20,6 @@ export class Client {
         this.socket = io(serveUrl)
 
         this.socket.on("connect", () => {
-            console.log("connected")
-
             this.receiveRoomInfo()
             this.receiveMyDice()
             this.receivePlayer2Dice()
@@ -136,7 +133,6 @@ export class Client {
 
     receiveDestroyMyDice() {
         this.socket.on("destroyMyDice", (diceInfos) => {
-            console.log(diceInfos);
             const animationDuration = this.game.animation.explodeDice("2", diceInfos.columnId, diceInfos.nbCase)
 
             setTimeout(() => {
@@ -176,7 +172,6 @@ export class Client {
             }
 
             $("#namePlayer1").text(roomInfo.p2Name)
-            console.log(roomInfo)
         })
     }
 

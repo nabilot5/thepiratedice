@@ -63,7 +63,7 @@ const leaderBoard = new Leaderboard()
 leaderBoard.init()
 
 const shop = new Shop()
-shop.showBonus()
+shop.showShop()
 
 const game = new Game()
 game.init()
@@ -98,69 +98,37 @@ $('#new-user-btn').on('click', () => {
     });
 })
 
-$("#menu-principal-btn").on("click", () => {
+$(".menu-principal-btn").on("click", () => {
     changeBackground()
     $("#menu-principal").fadeIn(400)
     $("#leaderboard").fadeOut(400)
     $("#shop").fadeOut(400)
+    $("#profile").fadeOut(400)
 })
 
-$("#shop-btn").on("click", () => {
+$(".shop-btn").on("click", () => {
     $('#backg').attr('src', 'https://ik.imagekit.io/mbo2hq52r/assets/wallpaper_JTNJAeMQJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045675697');
     $("#menu-principal").fadeOut(400)
     $("#leaderboard").fadeOut(400)
     $("#shop").fadeIn(400)
+    $("#profile").fadeOut(400)
 })
 
-$("#leaderboard-btn").on('click', () => {
+$(".leaderboard-btn").on('click', () => {
     $('#backg').attr('src', 'https://ik.imagekit.io/mbo2hq52r/assets/wallpaper_JTNJAeMQJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045675697');
+    $("#profile").fadeOut(400)
+    $("#profile").fadeOut(400)
 })
 
-$('#player-info').on('click', () => {
+$('.player-info').on('click', () => {
+    $('#backg').attr('src', '');
+    $("#profile").fadeIn(400)
     $("#menu-principal").fadeOut(400)
-    $("#leaderboard").fadeIn(400)
+    $("#leaderboard").fadeOut(400)
     $("#shop").fadeOut(400)
 })
 
-$("#bonus-btn").on('click', () => {
-    $("#bonus-items").fadeIn(400)
-    $("#emots-items").fadeOut(400)
-    $("#icons-items").fadeOut(400)
-    $("#skin-items").fadeOut(400)
-    $("#coin-items").fadeOut(400)
-})
 
-$("#emots-btn").on('click', () => {
-    $("#bonus-items").fadeOut(400)
-    $("#emots-items").fadeIn(400)
-    $("#icons-items").fadeOut(400)
-    $("#skin-items").fadeOut(400)
-    $("#coin-items").fadeOut(400)
-})
-
-$("#icons-btn").on('click', () => {
-    $("#bonus-items").fadeOut(400)
-    $("#emots-items").fadeOut(400)
-    $("#icons-items").fadeIn(400)
-    $("#skin-items").fadeOut(400)
-    $("#coin-items").fadeOut(400)
-})
-
-$("#skin-btn").on('click', () => {
-    $("#bonus-items").fadeOut(400)
-    $("#emots-items").fadeOut(400)
-    $("#icons-items").fadeOut(400)
-    $("#skin-items").fadeIn(400)
-    $("#coin-items").fadeOut(400)
-})
-
-$("#buy-po-btn").on('click', () => {
-    $("#bonus-items").fadeOut(400)
-    $("#emots-items").fadeOut(400)
-    $("#icons-items").fadeOut(400)
-    $("#skin-items").fadeOut(400)
-    $("#coin-items").fadeIn(400)
-})
 
 
 $("#btn-rules").on('click', () => {

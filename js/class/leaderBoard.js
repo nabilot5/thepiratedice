@@ -1,6 +1,8 @@
 export class Leaderboard {
     constructor() {
-        this.btnId = "#leaderboard-btn"
+        ///////////////////////////////////////
+        this.btnId = ".leaderboard-btn"
+        ///////////////////////////////////////
         this.leaderboardId = "#leaderboard"
         this.tableId = "#leaderboard-table"
         this.menuPrincipal = "#menu-principal"
@@ -14,8 +16,7 @@ export class Leaderboard {
         $(this.btnId).on("click", () => {
             $.ajax({
                 type: "POST",
-                // url: "http://localhost:8080/api/rating/all",
-                url: "https://shielded-sea-87437.herokuapp.com/api/rating/all",
+                url: "http://nabilot.alwaysdata.net/api/rating/all",
                 success: function (response) {
                     this.add(response)
 
@@ -44,10 +45,7 @@ export class Leaderboard {
                 myPosition = index + 1
 
                 $(this.playerPseudo).html(`Nom : ${data.pseudo}<br/>Position : ${myPosition}/${datas.length}<br/>Score : ${data.rating}`)
-                // this.showMyPosition(datas.length, `Position : ${myPosition}/${datas.length}`)
-                // $(this.playerElo).html(`Score : ${data.rating}`)
             }
-            // data.pseudo === localStorage.getItem("pseudo") ? styleClass = ' class="color-or"' : null
 
             html += `<tr>
                         <td${styleClass}>${data.pseudo}</td>

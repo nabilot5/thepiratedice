@@ -14,75 +14,70 @@ export class Inventory {
     open() {
         $(this.inventoryBtn).on("click", () => {
             $(this.inventoryMenu).fadeIn(400)
-            this.getInventory()
+            this.getInventory("inventory-items")
         })
     }
 
     close() {
         $(this.inventoryClose).on("click", () => {
             $(this.inventoryMenu).fadeOut(400, () => {
-                $(`${this.inventoryItems} ul`).html("")
+                $(`#inventory-items`).html("")
             })
         })
     }
 
-    getInventory() {
+    getInventory(html) {
         $.ajax({
             type: "POST",
-            // url: "http://localhost:8080/api/inventory/myInventory",
-            url: "https://shielded-sea-87437.herokuapp.com/api/inventory/myInventory",
+            url: "http://nabilot.alwaysdata.net/api/inventory/myInventory",
+            // url: "https://shielded-sea-87437.herokuapp.com/api/inventory/myInventory",
             data: {
                 pseudo: localStorage.getItem("pseudo"),
                 password: localStorage.getItem("password"),
             },
             dataType: "json",
             success: function (response) {
-                this.addAllBonus(response)
-                this.choiceBonus()
+                this.addAllBonus(response, html)
+                this.choiceBonus(html)
             }.bind(this),
             error: (xhr, ajaxOptions, thrownError) => {
-                console.log(xhr)
-                console.log(thrownError)
             }
         })
     }
 
-    addAllBonus(allBonus) {
-        let html = ""
-
-        $(`${this.inventoryItems}`).html(html)
-
-        allBonus.forEach(bonus => {
-            html += this.addBonus(
-                bonus.imgUrl,
-                bonus.quantity,
-                bonus.product,
-                bonus.description,
-                bonus.productId
-            )
+    addAllBonus(allBonus, html) {
+        const element = document.createElement('div');
+        element.setAttribute('class', 'bonus-inventory-items')
+        element.append('bonus-inventory')
+        allBonus.forEach(item => {
+            this.addBonus(item.imgUrl, item.quantity, item.product, item.description, item.productId, html)
         })
-
-        $(`${this.inventoryItems}`).append(html)
     }
 
-    addBonus(imgLink, quantity, name, description, productId) {
-        return `
-            <button data-tooltip="${description}" style="background-image:url('${imgLink}');" id="items-btn" type="button" value="${productId}">
+    addBonus(imgLink, quantity, name, description, productId, html) {
+        $(`#bonus-inventory-items`).append(
+            `<div data-tooltip="${description}" style="background-image:url('${imgLink}');">
                 <p>${name}</p>
-                <h3>${quantity}</h3>
-            </button>
-        `
+                <h2>${quantity}</h2>
+            </div>`
+        )
+        $(`#${html}`).append(
+            `<button data-tooltip="${description}" style="background-image:url('${imgLink}');" id="items-btn" type="button" value="${productId}">
+                <p>${name}</p>
+                <h2>${quantity}</h2>
+            </button>`
+        )
+        this.tooltip()
     }
 
-    choiceBonus() {
-        $("#inventory-items button").each((index, element) => {
+    choiceBonus(html) {
+        $(`#${html} button`).each((index, element) => {
             $(element).on("click", () => {
                 this.game.client.sendBonusChoice(
                     $(element).attr("value")
                 )
             })
         })
-        this.tooltip()
     }
 
     removeBonusChoice() {
@@ -146,5 +141,20 @@ export class Inventory {
                 });
             }
         }
+    }
+
+    executionBtn() {
+        this.selectBtn("bonus-inventory")
+        this.selectBtn("skin-inventory")
+        this.selectBtn("emot-inventory")
+    }
+
+    selectBtn(type) {
+        $(`#${type}-btn`).on('click', () => {
+            $("#bonus-inventory-items").fadeOut(400)
+            $("#emots-inventory-items").fadeOut(400)
+            $("#icons-inventory-items").fadeOut(400)
+            $(`#${type}-items`).fadeIn(400)
+        })
     }
 }

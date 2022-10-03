@@ -1,5 +1,5 @@
 /* ##################### Reset ###################### */
-html, body, header, #game, #wrapper {
+html, body, #game, #wrapper {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -79,8 +79,8 @@ main {
 /* ######################## scrollbar #################### */
 
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 0px;
+    height: 0px;
 }
 
 ::-webkit-scrollbar-button {
@@ -247,74 +247,6 @@ main {
     }
 }
 
-/* ######################## header ########################## */
-header {
-    z-index: 1;
-    height: 7%;
-    min-height: 30px;
-    position: absolute;
-    top: 0;
-}
-
-#head-menu {
-    margin-top: 1%;
-    display: flex;
-    width: 99.3%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.828);
-    box-shadow: 0px 1vh 3vh 3vh rgba(0, 0, 0, 0.828);
-}
-
-/* - header nav-bar  */
-nav {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-ul {
-    flex-grow: 2;
-}
-
-/* #player-info {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-} */
-
-#account {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    margin-right: 1vh;
-    border: 2px solid white;
-    border-radius: 50%;
-    color: white;
-}
-
-#player-name, #player-rating {
-    color: white;
-    padding: 0 2% 0 0;
-}
-
-.nav-btn {
-    border: none;
-}
-
 /* ################## connect menu ########################*/
 /* - formulaire */
 
@@ -386,7 +318,6 @@ ul {
     border: 1px solid white;
     border-radius: 0 0.3rem 0.3rem 0;
 }
-
 
 .form-control input:active {
     padding: 0;
@@ -519,134 +450,80 @@ td:first-child {
 }
 
 
-/* ####################### shop ######################## */
 
-#shop-bonus ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
 
-.shop-cart {
-    background-color: #801502;
-    width: 27.3%;
-    text-align: center;
-    margin: 2%;
-    padding: 1%;
-    border-radius: 2%;
-}
+/* ####################### profil ######################## */
 
-.shop-cart div {
-    position: relative;
-}
-
-.shop-cart img {
-    width: 80%;
-    border: 2px solid rgb(128, 86, 8);
-    background-color: rgb(34, 9, 14);
-}
-
-.shop-cart div p {
+#profile {
+    font-size: 0.7em;
+    color: rgb(203, 203, 203);
     position: absolute;
-    bottom: -0.5vh;
-    right: -0.5vw;
-    margin: 0;
-    color: white;
-    border-radius: 50%;
-    border: 2px solid rgb(128, 86, 8);
-    text-align: center;
-    font-size: 1rem;
-    background-color: #000000;
+    top: 20%;
+    left: 5%;
+    width: 90%;
+    height: 70%;
+    /* border: 1px solid black; */
 }
 
-#buy-items {
-    background-color: transparent;
-    border: none;
-    text-align: center;
-    align-content: center;
-}
-
-#items-btn {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-#coin-items, #icons-items, #coin-items, #emots-items, #skin-items,#bonus-items, #inventory-menu {
-    padding: 4%;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows:1fr;
-    grid-gap: 20%;
-}
-
-#coin-items button, #icons-items button, #coin-items button, #emots-items button, #skin-items button, #bonus-items button, #inventory-menu button {
-    text-align: center;
-    align-items: center;
-    border: 2px solid #b6422d;
-    background-color: transparent;
-    width: 200px;
-    height: 200px;
-}
-
-#coin-items p, #icons-items p, #coin-items p, #emots-items p, #skin-items p,#bonus-items p, #inventory-menu p {
-    color: #fff;
-    margin-top: 80%;
-}
-
-#coin-items h3, #icons-items h3, #coin-items h3, #emots-items h3, #skin-items h3, #bonus-items h3, #inventory-menu h3 {
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    margin-top: -5%;
-}
-
-.tooltip {
-    position : absolute;
-    padding : 1em;
-    z-index : 45;
-    border: 2px solid #333;
-    border-radius: 2%;
-    color : #fff;
-    width: 15%;
-    text-align : center;
-    background : rgba(0, 0, 0, 0.3);
-    font-size : 20px;
-}
-
-
-#bgPanel {
-    display: flex;
-    margin-top: 5%;
-    margin-left: 25%;
-    width: 65%;
-    height:550px;
-    background-image: url("https://ik.imagekit.io/mbo2hq52r/assets/content_rtQg2N7EGC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674110");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-#panel button {
-    position: relative;
-    background-color: transparent;
-    border: none;
-}
-
-#panel {
-    margin-top: 2%;
-    margin-left: 6%;
+#statPlayer {
+    display: inline-block;
+    position: absolute;
+    right: 0;
     width: 20%;
-    height: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
 }
+
+#statPlayer h1 {
+    margin-top: 2%;
+    width: 40%;
+    float: left;
+}
+
+#profileImage {
+    margin-right:20%;
+    float: right;
+    position: relative;
+    z-index: 2;
+    width: 30%;
+    transition: border-radius 1s ease-out;
+    border-radius: 40% 20% 15% 30% / 40% 15% 30% 40%;
+    animation: morph 8s ease-in-out infinite both alternate;
+    border: 4px solid rgb(203, 203, 203);
+}
+
+#profileImage img {
+    animation: spin 5s linear infinite reverse;
+}
+
+@keyframes morph {
+    0% {border-radius: 40% 50% 50% 40% / 30% 20% 60% 40%;} 
+    100% {border-radius: 50% 65%;} 
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+#inventoryPlayer button {
+    margin-top: 10%;
+    font-size: 2em;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(203, 203, 203);
+    border: none;
+}
+
+#inventoryPlayer button:hover {
+    color: #a97406;
+}
+
+
+
 
 /* ####################### game ######################### */
 
 /* #################### begin menu #################### */
-.hideGame {
-    display: none !important;
-}
 
 .clignote {
     background-color: transparent;
@@ -695,21 +572,22 @@ td:first-child {
 
 #leaderboard-btn {
     width: 116%;
+    margin-left: -0.5%;
     /* margin: -5px; */
     background-color: transparent;
     border: none;
 }
 
 #shop-btn {
-    margin-left: -2%;
+    margin-left: -10%;
     width: 116%;
-    /* margin: -5px; */
+    margin-left: -3.5%;
     background-color: transparent;
     border: none;
 }
 
 #player-info {
-    margin-left: -9%;
+    margin-left: -13%;
     width: 116%;
     background-color: transparent;
     border: none;
@@ -835,9 +713,9 @@ td:first-child {
     border: none;
     background-color: transparent;
     position: absolute;
-    margin-top: 35%;
+    margin-top: 25%;
     margin-right: 65%;
-    width: 20%;
+    width: 15%;
     z-index: 7;
 }
 
@@ -974,8 +852,8 @@ td:first-child {
 .grille {
     padding: 5%;
     display: flex;
-    width: 60%;
-    height: 40%;
+    width: 70%;
+    height: 60%;
 }
 
 .col {
@@ -1008,7 +886,7 @@ td:first-child {
 }
 
 .case img {
-    /* border-radius: 15%; */
+    border-radius: 20%;
 }
 
 .case-hover:hover {
@@ -1017,36 +895,23 @@ td:first-child {
 
 /* ##################### inventory ####################*/
 
-#inventory-btn {
-    position: absolute;
-    z-index: 30;
-}
-
 #inventory-menu {
     color: white;
     position: absolute;
     z-index: 40;
     width: 65%;
     height: 60%;
-    background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 55%, rgba(119, 13, 13, 1) 100%);
     border: 2px solid rgb(255, 136, 0);
     overflow: auto;
 }
 
 #inventory-menu h1 {
-    display: inline-block;
     border-bottom: 1px solid white;
-    padding: 0 15% 1% 0;
-    margin-left: 2%;
+    padding: 0 0 1% 0;
 }
 
-#inventory-menu>div {
-    display: flex;
-    flex-direction: row;
-}
-
-#inventory-items ul {
+#inventory-items div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1054,9 +919,9 @@ td:first-child {
 
 #inventory-close {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 15%;
+    top: 1%;
+    right: 0%;
+    width: 10%;
     min-width: 40px;
 }
 
@@ -1086,14 +951,21 @@ td:first-child {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 200px;
     margin: 0 auto;
+}
+
+#background-bet {
+    z-index: -1;
+    position: absolute;
+    width: 40%;
+    top: 35%;
+    left: 30%;
 }
 
 #bet form label {
     color: white;
-    font-size: 2vh;
-    margin: 3%;
+    font-size: 1.5vh;
+    margin: 4%;
 }
 
 #bet form input {
@@ -1109,8 +981,20 @@ td:first-child {
     text-align: center;
 }
 
-#bet form button {
-    margin: 5%;
+#lore-bet {
+    z-index: -1;
+    position: absolute;
+    margin-left: 6%;
+    top: 25%;
+    width: 10%;
+}
+
+#validate-bet {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    width: 15%;
+    margin-top: 18%;
 }
 
 /* ################## end menu ################## */
@@ -1181,11 +1065,25 @@ td:first-child {
 
 /* ################## animation ################## */
 
-#btn-rules:hover, #returnToTheGame:hover, #lore:hover, #redirectionSolo:hover, #redirectionMulti:hover, .reset:hover, #quitGame:hover {
+#btn-rules:hover, 
+#returnToTheGame:hover, 
+#lore:hover, 
+#redirectionSolo:hover, 
+#redirectionMulti:hover, 
+.reset:hover, 
+#quitGame:hover,
+#validate-bet:hover {
     transform: scale(1.05)
 }
 
-#btn-rules:active, #returnToTheGame:active, #lore:active, #redirectionSolo:active, #redirectionMulti:active, .reset:active, #quitGame:active {
+#btn-rules:active,
+#returnToTheGame:active,
+#lore:active,
+#redirectionSolo:active,
+#redirectionMulti:active, 
+.reset:active, 
+#quitGame:active,
+#validate-bet:active {
     transform: scale(1)
 }
 
@@ -1241,29 +1139,19 @@ td:first-child {
 }
 
 .vibrate {
-    /* border: 0.3rem dashed rgba(255,255,255,1); */
-    /* box-shadow: -1px -1px 10px 2px  yellow;  */
-    animation: fire 5s infinite;
+    animation: fire 4s infinite;
 }
 
 @keyframes fire {
-    0% {
-        box-shadow: 0px 0px 10px 2px  yellow; 
-        box-shadow: 0px 0px 7px 2px  orange; 
-    }
-    25% {
-        box-shadow: 1px 1px 7px 2px  orange; 
-    }
     50% {
-        box-shadow: 1px 1px 10px 2px  yellow; 
-        box-shadow: 0px 0px 7px 2px  orange; 
-    }
-    75% {
-        box-shadow: 1px 1px 7px 2px  orange; 
-    }
-    100% {
-        box-shadow: 0px 0px 10px 2px  yellow; 
-        box-shadow: 0px 0px 7px 2px  orange; 
+        box-shadow:
+            inset 0 0 20px #fefcc9,
+            0 0 4px #fefcc9,
+            0 0 5px #feec85,
+            0 0 7px #ffae34,
+            0 0 10px #cd4606,
+            0 0 10px #973716,
+            0 0 20px #ec760c;
     }
 }
 

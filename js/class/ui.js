@@ -166,7 +166,6 @@ export class Ui {
             }
 
             else {
-                console.log("Entrer votre mise");
             }
         })
     }

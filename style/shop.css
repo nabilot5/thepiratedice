@@ -1,0 +1,127 @@
+/* ####################### shop ######################## */
+
+#coin-btn {
+    margin-bottom: 5%;
+    color: rgb(203, 203, 203);
+    width: 90%;
+    height: 50px;
+    text-align: center;
+    background-color: #1b1713;
+    border: 3px solid #a97406;
+    border-radius: 1em;
+}
+
+#coin-img {
+    margin: 0 auto;
+    top: -10px;
+    left: -10px;
+    position: absolute;
+    width: 20%;
+}
+
+#panel button {
+    margin: 0 auto;
+    color: rgb(203, 203, 203);
+    width: 90%;
+    height: 50px;
+    text-align: center;
+    color: #a97406;
+    background-color: #5c0408;
+    border: 3px solid #1b1713;
+    /* border-radius: 1em; */
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+#coin-stat-btn {
+    color: rgb(203, 203, 203);
+    width: 90%;
+    height: 50px;
+    text-align: center;
+    background-color: #1b1713;
+    border: 3px solid #a97406;
+    border-radius: 1em;
+    margin-top: 5%;
+}
+
+
+#buy-items {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    align-content: center;
+}
+
+#items-btn {
+    font-family: cursive;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#coin-items, #icons-items, #coin-items, #emots-items, #skin-items,#bonus-items, #inventory-menu {
+    width: 800px;
+    height: 500px;
+    overflow: auto;
+    padding: 4%;
+}
+
+#coin-items button, #icons-items button, #coin-items button, #emots-items button, #skin-items button, #bonus-items button, #inventory-menu button {
+    margin: 1%;
+    text-align: center;
+    align-items: center;
+    border: 2px solid #b6422d;
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+}
+
+#coin-items p, #icons-items p, #coin-items p, #emots-items p, #skin-items p,#bonus-items p, #inventory-menu p {
+    color: #fff;
+    margin-top: 65%;
+}
+
+#coin-items h3, #icons-items h3, #coin-items h3, #emots-items h3, #skin-items h3, #bonus-items h3, #inventory-menu h3 {
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    margin-top: 0;
+}
+
+#coin-items h2, #icons-items h2, #coin-items h2, #emots-items h2, #skin-items h2, #bonus-items h2, #inventory-menu h2 {
+    /* align-items: center; */
+    text-align: right;
+    color: #fff;
+    /* margin-top: -19%; */
+}
+
+#bgPanel {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 25%;
+    width: 800px;
+    height: 525px;
+    display: flex;
+    background-image: url("https://ik.imagekit.io/mbo2hq52r/assets/content_rtQg2N7EGC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674110");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#panel {
+    margin-top: 6%;
+    margin-left: 6%;
+    width: 20%;
+    position: absolute;
+}
+
+.tooltip {
+    opacity: 100%;
+    position : absolute;
+    padding : 1em;
+    z-index : 45;
+    border: 2px solid #333;
+    border-radius: 2%;
+    color : #fff;
+    width: 15%;
+    text-align : center;
+    background : black;    
+}

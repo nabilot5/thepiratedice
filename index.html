@@ -2,11 +2,12 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="icon" href="assets/pieces.ico"/>
+		<link rel="icon" href="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link
-		rel="stylesheet" href="style/style.css"/>
+		<link rel="stylesheet" href="style/style.css"/>
+		<link rel="stylesheet" href="style/shop.css"/>
+		<link rel="stylesheet" href="style/navbar.css"/>
 		<script src="https://kit.fontawesome.com/b7c84a7a15.js" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://unpkg.com/socket.io-client@4.5.0/dist/socket.io.min.js"></script>
@@ -33,32 +34,48 @@
 			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice4.png?ik-sdk-version=javascript-1.4.3" alt="">
 			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice5.png?ik-sdk-version=javascript-1.4.3" alt="">
 			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice6.png?ik-sdk-version=javascript-1.4.3" alt="">
+			<img src="/v13/Client/assets/animationsEffect/explosion.png" alt="">
 		</div>
 
 		<div id="index" class="wrapper hide">
-			<header class="hide">
+			<!-- <header class="hide">
 				<div id="head-menu">
-					<nav>
-						<ul>
-							<li>
-								<button id="menu-principal-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/principalMenu_EdAfd4S9M.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045321502" alt=""></button>
-							</li>
-							<li>
-								<button id="leaderboard-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/leaderboard_ZxMEB5dzt6.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045321133" alt=""></button>
-							</li>
-							<li>
-								<button id="shop-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/shop_jD8WNe_D9.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045321597" alt=""></button>
-							</li>
-							<li>
-								<button id="player-info" type="button">
-									<img src="https://ik.imagekit.io/mbo2hq52r/assets/account_eKkgZUqPo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045321076" alt="">
-									<!-- <p id="player-name"></p> -->
-								</button>
-							</li>
-						</ul>
-					</nav>
+					<button id="menu-principal-btn" type="button">MENU PRINCIPAL</button>
+					<button id="leaderboard-btn" type="button">CLASSEMENT</button>
+					<button id="shop-btn" type="button">BOUTIQUE</button>
+					<button id="player-info" type="button"><p id="player-name"></p></button>
+				</div>
+			</header> -->
+
+			<header>
+				<div id="brand">THE PIRATE'S DICES</div>
+				<nav>
+					<div id="nav">
+						<button class="menu-principal-btn" type="button">MENU PRINCIPAL</button>
+						<button class="leaderboard-btn" type="button">CLASSEMENT</button>
+						<button class="shop-btn" type="button">BOUTIQUE</button>
+						<!-- <button class="player-info" type="button">ICONE</button> -->
+					</div>
+				</nav>
+
+				<div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+					<div class="bar1"></div>
+					<div class="bar2"></div>
+					<div class="bar3"></div>
+					<div id="mobile-menu">
+						<button class="menu-principal-btn" type="button">MENU PRINCIPAL</button>
+						<button class="leaderboard-btn" type="button">CLASSEMENT</button>
+						<button class="shop-btn" type="button">BOUTIQUE</button>
+						<!-- <button class="player-info" type="button">ICONE</button> -->
+					</div>
 				</div>
 			</header>
+
+			<script>
+				function toggleMobileMenu(menu) {
+    				menu.classList.toggle('open');
+				}
+			</script>
 
 			<img id="backg" class="img-fit" src="" alt="">
 			
@@ -143,49 +160,32 @@
 				</div>
 			</section>
 
-			<section id="shop" class="page-menu hide">
+			<section id="shop" class="page-menu pos-abs bottom-0 hide">
 				<div id="shop-bonus">
 					<div id="panel">
-						<button id="buy-po-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/buy-po_RnDqUowK2H.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674327" alt=""></button>
-						<button id="skin-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/skin_IEWWPhHWjj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674392" alt=""></button>
-						<button id="icons-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/icons_CIs3vCoMI.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674249" alt=""></button>
-						<button id="emots-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/emots_QXxFDJUnN.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674262" alt=""></button>
-						<button id="bonus-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/bonus_l9Su6hu01.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674331" alt=""></button>
-						<button id="coin-stat-btn" type="button"><img src="https://ik.imagekit.io/mbo2hq52r/assets/coin-stat_HGil4FYcz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674147" alt=""></button>
+						<input id="coin-btn" type="button" value="Acheter des Pièces d'or"><img id="coin-img" src="https://ik.imagekit.io/mbo2hq52r/assets/buy-po_CAYURY217.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664791779192" alt=""></input>
+						<button id="skin-btn" type="button">Dés</button>
+						<button id="icons-btn" type="button">Icones</button>
+						<button id="emots-btn" type="button">Emotes</button>
+						<button id="bonus-btn" type="button">Bonus</button>
+						<div id="coin-stat-btn"></div>
 					</div>
-					<div id="bgPanel">
-						<div id="coin-items" class="content-menu hide">
-							<button style="background-image:url('https://ik.imagekit.io/mbo2hq52r/assets/100-po_KY9NUccnOF.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045321829');" id="items-btn" type="button">
-								<p>Golden Dices</p>
-								<h3>100<img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
-							</button>
-							<button style="background-image:url('https://ik.imagekit.io/mbo2hq52r/assets/1000-po_kUL61tnfg.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045321340');" id="items-btn" type="button">
-								<p>Golden Dices</p>
-								<h3>100<img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
-							</button>
-						</div>
-						<div id="bonus-items" class="content-menu hide">
-						</div>
-						<div id="emots-items" class="content-menu hide">
-						</div>
-						<div id="icons-items" class="content-menu hide">
-							<button style="background-image:url('https://ik.imagekit.io/mbo2hq52r/assets/icon-perroquet_yTbyonmD-.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045322655');" id="items-btn" type="button">
-								<p>Golden Dices</p>
-								<h3>100<img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
-							</button>
-						</div>
-						<div id="skin-items" class="content-menu hide">
-							<button style="background-image:url('https://ik.imagekit.io/mbo2hq52r/assets/gold-dice_TkdLM_LoDL.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045321422');" id="items-btn" type="button">
-								<p>Golden Dices</p>
-								<h3>100<img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
-							</button>
-							<button data-tooltip="Jewel Dice" style="background-image:url('https://ik.imagekit.io/mbo2hq52r/assets/ice-dice_MdmExHR4jC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045322458');" id="items-btn" type="button">
-								<p>Jewel Dices</p>
-								<h3>120<img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
-							</button>
-						</div>
-					</div>
+					<div id="bgPanel"></div>
 				</div>
+			</section>
+
+			<section id="profile" class="page-menu hide">
+				<div id="statPlayer">
+					<img id="profileImage" src="parrot.png" alt="">
+					<h1>KenKitano</h1>
+					<h1>900000<img style="width:20%;margin-bottom: -6.5%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h1>
+				</div>
+				<div id="inventoryPlayer">
+					<button id="bonus-inventory-btn"><h1>Bonus</h1></button>
+					<button id="skin-inventory-btn"><h1>Skin</h1></button>
+					<button id="emot-inventory-btn"><h1>Emots</h1></button>
+				</div>
+				<div id="contentInventory"></div>
 			</section>
 
 		</div>
@@ -194,18 +194,19 @@
 			<div id="wrapper" class="">
 				<div id="rules">
 					<div id="oppacity"></div>
-					<img id="rulesImg" src="https://ik.imagekit.io/iq52ivedsj/assets/rules_ROww_5bvR.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662987080304" alt=""/>
+					<img id="rulesImg" src="https://ik.imagekit.io/mbo2hq52r/assets/rules_KxnY6a0rx.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664205135631" alt=""/>
 					<button id="returnToTheGame">
 						<img src="https://ik.imagekit.io/iq52ivedsj/assets/returnToTheGame_vd6nEsgBE.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986935888" alt=""/>
 					</button>
 				</div>
 
 				<button id="btn-rules" class="">
-					<img src="https://ik.imagekit.io/iq52ivedsj/assets/rulesBtn__tgNoo_Yj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986949295" alt=""/>
+					<img src="https://ik.imagekit.io/mbo2hq52r/assets/rules-btn_lTjyz6OqX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664205133511" alt=""/>
 				</button>
 
 				<button id="lore" class="">
-					<img src="https://ik.imagekit.io/iq52ivedsj/assets/pieces_jo4ovO8J0.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986935971" alt="">
+					<!-- <img src="https://ik.imagekit.io/iq52ivedsj/assets/pieces_jo4ovO8J0.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986935971" alt=""> -->
+					<img src="https://ik.imagekit.io/mbo2hq52r/assets/coffre_UVq0oNMjyM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664289319055" alt="">
 				</button>
 
 
@@ -287,10 +288,9 @@
 				</div>
 
 				<div id="inventory-menu" class="hide">
+					<h1>Bonus</h1>
 					<div>
-						<div id="inventory-items">
-							<h1>BONUS</h1>
-						</div>
+						<div id="inventory-items"></div>
 						<div id="inventory-close">
 							<img src="https://ik.imagekit.io/iq52ivedsj/assets/quitBtn_X1x10G28x.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986933210" alt="">
 						</div>
@@ -314,12 +314,20 @@
 
 				<div id="bet">
 					<div id="bet-form">
+						<img id="background-bet" src="https://ik.imagekit.io/mbo2hq52r/assets/panneau_LGjpWJXsaE.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664289319273" alt="">
+						<img id="lore-bet" src="https://ik.imagekit.io/mbo2hq52r/assets/coffre_UVq0oNMjyM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664289319055" alt="">
 						<form action="#">
 							<label for="bet-value">
 								Mise des points
 							</label>
 							<input type="text" name="bet-value" value="0">
-							<button type="button">Valider</button>
+							<label for="bet-value">
+								Double ce nombre en cas de victoire<br/>
+								Perdre ces points en cas de défaite
+							</label>
+							<button id="validate-bet" type="button">
+								<img src="https://ik.imagekit.io/iq52ivedsj/assets/pieces_jo4ovO8J0.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986935971" alt="">
+							</button>
 						</form>
 					</div>
 				</div>

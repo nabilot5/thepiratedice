@@ -12,8 +12,7 @@ export class Login {
         if (pseudo !== null && password !== null) {
             $.ajax({
                 type: "POST",
-                // url: "http://localhost:8080/api/auth/autoconnect",
-                url: "https://shielded-sea-87437.herokuapp.com/api/auth/autoconnect",
+                url: "http://nabilot.alwaysdata.net/api/auth/autoconnect",
                 data: {
                     "pseudo": pseudo,
                     "password": password
@@ -21,16 +20,14 @@ export class Login {
                 dataType: "json",
                 success: function (response) {
                     $("#menu-principal h1").html(`Welcome ${response.pseudo}`)
-                    $("#player-name").html(`${response.pseudo}`)
+                    //////////////////////////////////////////////////////////////////////////////
+                    $(".player-name").html(`${response.pseudo}`)
+                    //////////////////////////////////////////////////////////////////////////////
                     $("#login-menu").fadeOut(400)
                     $("#menu-principal").fadeIn(400)
                     $("header").fadeIn(400)
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status)
-                    console.log(xhr.responseJSON)
-                    console.log(thrownError)
-
                     localStorage.clear()
                 }
             })
@@ -45,8 +42,7 @@ export class Login {
         document.getElementById("signin-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
-                // url: "http://localhost:8080/api/auth/signin",
-                url: "https://shielded-sea-87437.herokuapp.com/api/auth/signin",
+                url: "http://nabilot.alwaysdata.net/api/auth/signin",
                 data: {
                     "pseudo": this.pseudo,
                     "password": this.password
@@ -64,9 +60,6 @@ export class Login {
                     $("#player-name").html(`${response.pseudo}`)
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status)
-                    console.log(xhr.responseJSON.message)
-                    console.log(thrownError)
                 }
             });
         })
@@ -78,8 +71,7 @@ export class Login {
         document.getElementById("signup-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
-                // url: "http://localhost:8080/api/auth/signup",
-                url: "https://shielded-sea-87437.herokuapp.com/api/auth/signup",
+                url: "http://nabilot.alwaysdata.net/api/auth/signup",
                 data: {
                     "pseudo": this.pseudo,
                     "email": this.email,
@@ -87,15 +79,11 @@ export class Login {
                 },
                 dataType: "json",
                 success: function (response) {
-                    console.log(response)
                     $('#signup').fadeOut(400, () => {
                         $('#signin').fadeIn(400)
                     });
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status)
-                    console.log(xhr.responseJSON.message)
-                    console.log(thrownError)
                 }
             });
         })
