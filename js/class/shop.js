@@ -9,7 +9,7 @@ export class Shop {
     recoverData(section, html) {
         $.ajax({
             type: "POST",
-            url: "http://nabilot.alwaysdata.net/api/shop/category",
+            url: "https://nabilot.alwaysdata.net/api/shop/category",
             data: { category: section },
             dataType: "json",
             success: function (response) {
