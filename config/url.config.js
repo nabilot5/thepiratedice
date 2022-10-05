@@ -1,5 +1,5 @@
-const url_local_server = "https://nabilot.alwaysdata.net"
-const url_online_server = "https://nabilot.alwaysdata.net"
+const url_local_server = "https://serve.alwaysdata.net"
+const url_online_server = "https://serve.alwaysdata.net"
 
 // server
 export const url_server = window.location.hostname === "127.0.0.1" ? url_local_server : url_online_server
