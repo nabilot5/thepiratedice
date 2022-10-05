@@ -1,9 +1,10 @@
-const url_local_server = "http://serve.alwaysdata.net"
-const url_online_server = "https://serve.alwaysdata.net"
+const url_local_server = "https://nabilot.alwaysdata.net"
+const url_online_server = "https://nabilot.alwaysdata.net"
 
 // server
 export const url_server = window.location.hostname === "127.0.0.1" ? url_local_server : url_online_server
 export const url_player_server = `${url_server}/players`
+// console.log(url_server);
 
 // api
 export const url_api = `${url_server}/api`

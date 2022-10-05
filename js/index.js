@@ -44,9 +44,7 @@ const leaderBoard = new Leaderboard()
 leaderBoard.init()
 
 const shop = new Shop()
-/////////////////////////////////////////////////////////
 shop.showShop()
-/////////////////////////////////////////////////////////
 
 const game = new Game()
 game.init()
@@ -72,6 +70,12 @@ $('#redirectionMulti').on('click', () => {
         // show conect form
         console.log("Veillez vous connecter");
     }
+})
+
+$('#new-user-btn').on('click', () => {
+    $('#signin').fadeOut(400, () => {
+        $('#signup').fadeIn(400)
+    });
 })
 
 /////////////////////////////////////////////////////////////

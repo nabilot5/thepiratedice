@@ -26,7 +26,7 @@ export class Shop {
         this.recoverData("emot", 'emots-items')
         this.recoverData("icon", 'icons-items')
         this.recoverData("skin", 'skin-items')
-        this.recoverDataPlayer()
+        // this.recoverDataPlayer()
     }
 
     addAllItems(allItems, html) {
@@ -100,7 +100,6 @@ export class Shop {
                 $(`#coin-stat-btn`).attr('value', `${response.basicCoin}`)
             }.bind(this)
         })
-
     }
 
     executionBtn() {
