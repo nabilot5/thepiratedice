@@ -1,4 +1,4 @@
-import { url_shopCategory, url_basicPurchase } from "../../config/url.config.js"
+import { url_shopCategory, url_basicPurchase, url_playerInfos } from "../../config/url.config.js"
 
 export class Shop {
     constructor() {
@@ -90,7 +90,7 @@ export class Shop {
     recoverDataPlayer() {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/player/infos",
+            url: url_playerInfos,
             data: {
                 pseudo: localStorage.getItem("pseudo"),
                 password: localStorage.getItem("password"),
