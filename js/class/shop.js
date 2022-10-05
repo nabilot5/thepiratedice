@@ -26,10 +26,10 @@ export class Shop {
         this.recoverData("emot", 'emots-items')
         this.recoverData("icon", 'icons-items')
         this.recoverData("skin", 'skin-items')
-        this.recoverDataPlayer()
     }
 
     addAllItems(allItems, html) {
+        this.recoverDataPlayer()
         const content = document.createElement('div')
         content.setAttribute('id', html)
         content.setAttribute('class', 'content-menu hide')
@@ -62,6 +62,7 @@ export class Shop {
     }
 
     purchaseWithBasicCoin(html) {
+        this.recoverDataPlayer()
         $(`#${html} button`).each((index, element) => {
             $(element).on("click", () => {
                 const btnVal = $(element).val()
