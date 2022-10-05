@@ -1,3 +1,5 @@
+import { url_autoconnect, url_signin, url_signup } from "../../config/url.config.js"
+
 export class Login {
     constructor() {
         this.pseudo
@@ -12,22 +14,24 @@ export class Login {
         if (pseudo !== null && password !== null) {
             $.ajax({
                 type: "POST",
-                url: "http://nabilot.alwaysdata.net/api/auth/autoconnect",
+                url: url_autoconnect,
                 data: {
                     "pseudo": pseudo,
                     "password": password
                 },
                 dataType: "json",
                 success: function (response) {
-                    $("#menu-principal h1").html(`Welcome ${response.pseudo}`)
-                    //////////////////////////////////////////////////////////////////////////////
-                    $(".player-name").html(`${response.pseudo}`)
-                    //////////////////////////////////////////////////////////////////////////////
+                    $("#menu-principal h1").html(`${response.pseudo}`)
+                    $("#player-name").html(`${response.pseudo}`)
                     $("#login-menu").fadeOut(400)
                     $("#menu-principal").fadeIn(400)
                     $("header").fadeIn(400)
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status)
+                    console.log(xhr.responseJSON)
+                    console.log(thrownError)
+
                     localStorage.clear()
                 }
             })
@@ -42,7 +46,7 @@ export class Login {
         document.getElementById("signin-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
-                url: "http://nabilot.alwaysdata.net/api/auth/signin",
+                url: url_signin,
                 data: {
                     "pseudo": this.pseudo,
                     "password": this.password
@@ -60,6 +64,9 @@ export class Login {
                     $("#player-name").html(`${response.pseudo}`)
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status)
+                    console.log(xhr.responseJSON.message)
+                    console.log(thrownError)
                 }
             });
         })
@@ -71,7 +78,7 @@ export class Login {
         document.getElementById("signup-submit").addEventListener("click", () => {
             $.ajax({
                 type: "POST",
-                url: "https://nabilot.alwaysdata.net/api/auth/signup",
+                url: url_signup,
                 data: {
                     "pseudo": this.pseudo,
                     "email": this.email,
@@ -79,11 +86,15 @@ export class Login {
                 },
                 dataType: "json",
                 success: function (response) {
+                    console.log(response)
                     $('#signup').fadeOut(400, () => {
                         $('#signin').fadeIn(400)
                     });
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status)
+                    console.log(xhr.responseJSON.message)
+                    console.log(thrownError)
                 }
             });
         })

@@ -14,12 +14,13 @@ header a {
 header {
   padding: 0 20px;
   background-color: #5c0408;
-  height: 70px;
+  height: 50px !important;
   display: flex;
   justify-content: space-between;
 }
 
 #brand {
+  margin-left: 2%;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bold;
   font-size: 18px;
@@ -59,7 +60,8 @@ header {
 }
 
 #hamburger-icon {
-  margin: auto 0;
+  /* margin-right: ; */
+  margin: auto 5%;
   display: none;
   cursor: pointer;
 }
@@ -94,11 +96,12 @@ header {
 }
 
 #mobile-menu  {
+  border: 1px solid #c46509;
   display: none;
   position: absolute;
-  top: 70px;
+  margin-top: 1%;
   left: 0;
-  height: calc(100vh - 50px);
+  height: auto;
   width: 100%;
 }
 
@@ -109,7 +112,7 @@ header {
     z-index: 2;
     height: 40px;
     background-color: #5c0408;
-    border: 2px solid #c46509;
+    border: 1px solid #c46509;
 }
 
 @media only screen and (max-width: 600px) {

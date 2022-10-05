@@ -4,20 +4,6 @@ import { Game } from "./class/game.js"
 import { Loader } from "./class/loader.js"
 import { Shop } from "./class/shop.js"
 
-const resize = () => {
-    let body = document.body,
-        html = document.documentElement;
-
-    var height = Math.max(body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight);
-
-    document.getElementById("backg").style.height = height + "px"
-
-    let bgGameHeigth = document.getElementById("fond").height
-    document.getElementById("grids").style.height = bgGameHeigth + "px"
-}
-
-
 const changeBackground = () => {
     const bg = document.getElementById('backg');
     const time = new Date().getHours() + 1;
@@ -33,10 +19,6 @@ const changeBackground = () => {
     }
 }
 
-window.addEventListener("resize", () => {
-    resize()
-})
-
 const loader = new Loader()
 loader.add("Loading ...")
 
@@ -44,14 +26,13 @@ window.addEventListener('load', function () {
     setTimeout(() => {
         loader.remove()
     }, 500)
-    $("#index").fadeIn(400)
+    $("#wrapper").fadeIn(400)
 
     var SeaSound = document.getElementById('SeaSound')
     SeaSound.volume = 0.1
     SeaSound.loop = "true"
 }, false)
 
-resize()
 changeBackground()
 
 const login = new Login()
@@ -63,17 +44,19 @@ const leaderBoard = new Leaderboard()
 leaderBoard.init()
 
 const shop = new Shop()
+/////////////////////////////////////////////////////////
 shop.showShop()
+/////////////////////////////////////////////////////////
 
 const game = new Game()
 game.init()
 
 $('#redirectionSolo').on('click', () => {
+    console.log("ok");
     const pseudo = localStorage.getItem("pseudo")
     const password = localStorage.getItem("password")
     if (pseudo !== null && password !== null) {
         game.play("solo")
-        resize()
     } else {
         // show conect form
         console.log("Veillez vous connecter");
@@ -85,19 +68,13 @@ $('#redirectionMulti').on('click', () => {
     const password = localStorage.getItem("password")
     if (pseudo !== null && password !== null) {
         game.play("multi")
-        resize()
     } else {
         // show conect form
         console.log("Veillez vous connecter");
     }
 })
 
-$('#new-user-btn').on('click', () => {
-    $('#signin').fadeOut(400, () => {
-        $('#signup').fadeIn(400)
-    });
-})
-
+/////////////////////////////////////////////////////////////
 $(".menu-principal-btn").on("click", () => {
     changeBackground()
     $("#menu-principal").fadeIn(400)
@@ -117,20 +94,15 @@ $(".shop-btn").on("click", () => {
 $(".leaderboard-btn").on('click', () => {
     $('#backg').attr('src', 'https://ik.imagekit.io/mbo2hq52r/assets/wallpaper_JTNJAeMQJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045675697');
     $("#profile").fadeOut(400)
-    $("#profile").fadeOut(400)
+    $("#shop").fadeOut(400)
+    $("#menu-principal").fadeOut(400)
 })
 
 $('.player-info').on('click', () => {
-    $('#backg').attr('src', '');
+    $('#backg').attr('src', 'https://ik.imagekit.io/mbo2hq52r/assets/wallpaper_JTNJAeMQJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045675697');
     $("#profile").fadeIn(400)
     $("#menu-principal").fadeOut(400)
     $("#leaderboard").fadeOut(400)
     $("#shop").fadeOut(400)
 })
-
-
-
-
-$("#btn-rules").on('click', () => {
-    $("#rules").fadeIn(400)
-})
+//////////////////////////////////////////////////////////////

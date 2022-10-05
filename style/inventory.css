@@ -1,0 +1,84 @@
+/* ##################### inventory ####################*/
+
+#inventory-menu {
+    width: calc(100% - 4px);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 55%, rgba(119, 13, 13, 1) 100%);
+    border: 2px solid rgb(255, 136, 0);
+    overflow: auto;
+}
+
+@media (min-width: 650px) {
+    #inventory-menu {
+        width: 70%;
+        min-width: 650px;
+        max-width: 1200px;
+    }
+}
+
+#inventory-menu h1 {
+    display: inline-block;
+    width: 20%;
+    min-width: 110px;
+    border-bottom: 1px solid white;
+    padding: 0 0 1% 0;
+    margin-left: 2%;
+}
+
+#inventory-msg {
+    margin: 0;
+    padding: 2% 0;
+}
+
+#inventory-close {
+    width: 8%;
+    min-width: 40px;
+}
+
+.bg-hover-orange:hover {
+    background-color: orange;
+}
+
+/* #################### item cart ################### */
+
+.shop-cart {
+    margin: 4% 0;
+    max-width: 250px;
+    flex-wrap: wrap;
+}
+
+.shop-cart button {
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.shop-cart button:hover {
+    background-color: rgba(255, 119, 0, 0.241);
+}
+
+.shop-cart button:focus {
+    background-color: rgba(254, 0, 0, 0.492);
+}
+
+#description {
+    margin: 0;
+    padding: 10% 0;
+}
+
+#item-img div {
+    width: 99%;
+    border: 2px solid rgb(128, 86, 8);
+    background-color: black;
+}
+
+#item-img p {
+    position: absolute;
+    bottom: -0.5vh;
+    right: -0.5vw;
+    margin: 0;
+    border-radius: 50%;
+    border: 2px solid rgb(128, 86, 8);
+    text-align: center;
+    background-color: #000000;
+}

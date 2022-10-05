@@ -1,3 +1,5 @@
+import { url_shopCategory, url_basicPurchase } from "../../config/url.config.js"
+
 export class Shop {
     constructor() {
         this.bonusId = "bonus-items"
@@ -9,7 +11,7 @@ export class Shop {
     recoverData(section, html) {
         $.ajax({
             type: "POST",
-            url: "https://nabilot.alwaysdata.net/api/shop/category",
+            url: url_shopCategory,
             data: { category: section },
             dataType: "json",
             success: function (response) {
@@ -31,8 +33,8 @@ export class Shop {
         const content = document.createElement('div')
         content.setAttribute('id', html)
         content.setAttribute('class', 'content-menu hide')
-        document.getElementById('bgPanel').append(content)
         allItems.forEach(item => {
+            document.getElementById('bgPanel').append(content)
             this.addItems(item.imgUrl, item.product, item.description, item.basicPrice, item.id, html)
         })
 
@@ -42,18 +44,18 @@ export class Shop {
     addItems(imgLink, name, description, price, productId, html) {
         if (html === 'coin-items') {
             $(`#${html}`).append(`
-            <button data-tooltip="${description}" style="background-image:url('${imgLink}');" id="items-btn" type="button" value="${productId}">
-            <p>${name}</p>
-            <h3>${price} €</h3>
+            <button id="items-btn" type="button" value="${productId}" style="background-image:url('${imgLink}');" data-tooltip="${description}">
+                <p>${name}</p>
+                <h3>${price} €</h3>
             </button>
             `)
         }
         else {
             $(`#${html}`).append(`
-                <button data-tooltip="${description}" style="background-image:url('${imgLink}');" id="items-btn" type="button" value="${productId}">
+            <button  id="items-btn" type="button" value="${productId}" style="background-image:url('${imgLink}');" data-tooltip="${description}">
                 <p>${name}</p>
-                <h3>${price}<img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
-                </button>
+                <h3>${price}<img id="coin-icone" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
+            </button>
             `)
         }
         this.tooltip()
@@ -67,7 +69,7 @@ export class Shop {
 
                     $.ajax({
                         type: "POST",
-                        url: "http://nabilot.alwaysdata.net/api/shop/basicPurchase",
+                        url: url_basicPurchase,
                         data: {
                             pseudo: localStorage.getItem("pseudo"),
                             password: localStorage.getItem("password"),
@@ -88,15 +90,14 @@ export class Shop {
     recoverDataPlayer() {
         $.ajax({
             type: "POST",
-            url: "http://nabilot.alwaysdata.net/api/player/infos",
+            url: "http://localhost:8080/api/player/infos",
             data: {
                 pseudo: localStorage.getItem("pseudo"),
                 password: localStorage.getItem("password"),
             },
             dataType: "json",
             success: function (response) {
-                $(`#coin-stat-btn`).append(`
-                    ${response.basicCoin} <img style="width:10%;margin-bottom: -3.2%;" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt="">`)
+                $(`#coin-stat-btn`).attr('value', `${response.basicCoin}`)
             }.bind(this)
         })
 

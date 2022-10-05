@@ -18,8 +18,8 @@ export class Game {
     }
 
     init() {
-        this.player1 = new Player(this, document.getElementById("grille2"), 2)
-        this.player2 = new Player(this, document.getElementById("grille1"), 1)
+        this.player1 = new Player(this, document.getElementById("grille1"), 1)
+        this.player2 = new Player(this, document.getElementById("grille2"), 2)
 
         this.client.init()
 

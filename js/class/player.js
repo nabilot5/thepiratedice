@@ -50,64 +50,25 @@ export class Player extends Inventory {
         $(`#totalScore${this.id}`).html(totalScore)
     }
 
-    addEffect(columnId) {
-        const countDices = this.getFormatColumn(columnId).reduce((acc, value) => ({ ...acc, [value]: (acc[value] || 0) + 1 }), {})
-        const formatColumn = this.getFormatColumn(columnId)
-
-        const indices = [];
-        for (let element in countDices) {
-            if (element !== "null" && countDices[element] > 1) {
-                let idx = formatColumn.indexOf(element);
-                while (idx !== -1) {
-                    indices.push(idx);
-                    idx = formatColumn.indexOf(element, idx + 1);
-                }
-            }
-        }
-
-        indices.map(element => {
-            $(`#player${this.id}-col${columnId}-case-${element + 1}`).attr('class', 'case vibrate')
-        })
-    }
-
-    removeEffect(columnId) {
-        for (let element = 1; element <= 3; element++) {
-            $(`#player${this.id}-col${columnId}-case-${element}`).attr('class', 'case')
-        }
-    }
-
-    remove() {
-        for (let i = 1; i <= 3; i++) {
-            for (let j = 1; j <= 3; j++) {
-                for (let k = 1; k < 3; k++) {
-                    $(`#player${k}-col${i}-case-${j}`).attr('class', 'case')
-                    $(`#potPlayer${k}`).attr('src', "https://ik.imagekit.io/iq52ivedsj/assets/dices/choseDice_ftS4YvZbV.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986918825")
-                }
-            }
-        }
-    }
-
     refreshScoreColumn(columnId) {
         const scoreColumn = this.evalScoreColumn(columnId)
+
         this.addEffect(columnId)
-        this.removeEffect(columnId)
 
         if (scoreColumn > 0) {
-            $(`#totalScore${this.id}Column${columnId}`).html(scoreColumn)
+            $(`#totalScore${this.id}Column${columnId} p`).html(scoreColumn)
         } else {
-            $(`#totalScore${this.id}Column${columnId}`).html("")
+            $(`#totalScore${this.id}Column${columnId} p`).html("")
         }
     }
 
     evalScoreColumn(columnId) {
-        this.removeEffect(columnId)
         const countDices = this.getFormatColumn(columnId).reduce((acc, value) => ({
             ...acc,
             [value]: (acc[value] || 0) + 1
         }), {})
-        let totalScoreOfColumn = 0
 
-        this.addEffect(columnId)
+        let totalScoreOfColumn = 0
 
         for (let dice in countDices) {
             if (dice !== "null") {
@@ -130,7 +91,18 @@ export class Player extends Inventory {
         return formatColumn
     }
 
-
+    checkVibrateClass(id, col) {
+        for (let cell = 1; cell <= 3; cell++) {
+            let VibrateClass = document.getElementById(`player${id}-col${col}-case-${cell}`).getAttribute('class');
+            if (VibrateClass === 'vibrate') {
+                document.getElementById(`player${id}-col${col}-case-${cell}`).classList.remove('vibrate');
+                document.getElementById(`player${id}-col${col}-case-${cell}`).classList.add('vibrate');
+            }
+            else {
+                document.getElementById(`player${id}-col${col}-case-${cell}`).classList.add('vibrate');
+            }
+        }
+    }
 
     initControl() {
         this.controlChoiceDice()
@@ -159,6 +131,30 @@ export class Player extends Inventory {
         if (pseudo !== null) {
             this.name = pseudo
             $(`#namePlayer${this.id}`).html(pseudo)
+        }
+    }
+
+    addEffect(columnId) {
+        const countDices = this.getFormatColumn(columnId).reduce((acc, value) => ({ ...acc, [value]: (acc[value] || 0) + 1 }), {})
+
+        for (let element in countDices) {
+            if (element !== "null" && countDices[element] > 1) {
+                $(`#player${this.id}-col${columnId} img[data-value=${element}]`).parent().removeClass('vibrate')
+                setTimeout(() => {
+                    $(`#player${this.id}-col${columnId} img[data-value=${element}]`).parent().addClass('vibrate')
+                }, 100)
+            }
+        }
+    }
+
+    remove() {
+        for (let i = 1; i <= 3; i++) {
+            for (let j = 1; j <= 3; j++) {
+                for (let k = 1; k < 3; k++) {
+                    $(`#player${k}-col${i}-case-${j}`).attr('class', 'case')
+                    $(`#potPlayer${k}`).attr('src', "https://ik.imagekit.io/iq52ivedsj/assets/dices/choseDice_ftS4YvZbV.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986918825")
+                }
+            }
         }
     }
 }

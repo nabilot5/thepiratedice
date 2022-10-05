@@ -1,10 +1,9 @@
+import { url_allRating } from "../../config/url.config.js"
 export class Leaderboard {
     constructor() {
-        ///////////////////////////////////////
         this.btnId = ".leaderboard-btn"
-        ///////////////////////////////////////
         this.leaderboardId = "#leaderboard"
-        this.tableId = "#leaderboard-table"
+        this.tableId = ".responsive-table"
         this.menuPrincipal = "#menu-principal"
         this.shop = "#shop"
         this.playerPseudo = "#leaderboard-player-pseudo"
@@ -16,7 +15,7 @@ export class Leaderboard {
         $(this.btnId).on("click", () => {
             $.ajax({
                 type: "POST",
-                url: "http://nabilot.alwaysdata.net/api/rating/all",
+                url: url_allRating,
                 success: function (response) {
                     this.add(response)
 
@@ -30,28 +29,32 @@ export class Leaderboard {
 
     add(datas) {
         const table = $(this.tableId)
-        let html = `<tr>
-                        <th class="table-pseudo">Pseudo</th>
-                        <th class="table-elo">Elo</th>
-                        <th class="table-pos">Position</th>
-                    </tr>`
+        let html = `
+                    <li class="table-header">
+                        <div class="col col-1">Pseudo</div>
+                        <div class="col col-2">Elo</div>
+                        <div class="col col-3">Position</div>
+                    </li>`
 
         datas.forEach((data, index) => {
             let styleClass = ""
             let myPosition
 
             if (data.pseudo === localStorage.getItem("pseudo")) {
-                styleClass = ' class="color-or"'
                 myPosition = index + 1
 
-                $(this.playerPseudo).html(`Nom : ${data.pseudo}<br/>Position : ${myPosition}/${datas.length}<br/>Score : ${data.rating}`)
+                $(this.playerPseudo).html(`${data.pseudo}`)
+                $(this.playerElo).html(`Elo : ${data.rating}`)
+                this.showMyPosition(datas.length, myPosition)
             }
+            data.pseudo === localStorage.getItem("pseudo") ? styleClass = ' class="color-or"' : null
 
-            html += `<tr>
-                        <td${styleClass}>${data.pseudo}</td>
-                        <td${styleClass}>${data.rating}</td>
-                        <td${styleClass}>${index + 1}</td>
-                    </tr>`
+            html += `
+                    <li class="table-row">
+                        <div class="col col-1" data-label="Job Id">${data.pseudo}</div>
+                        <div class="col col-2" data-label="Customer Name">${data.rating}</div>
+                        <div class="col col-3" data-label="Amount">${index + 1}</div>
+                    </li>`
         })
 
         table.html(html)
