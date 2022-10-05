@@ -57,7 +57,7 @@ export class Client {
 
             // callback
             (response) => {
-                console.log(response);
+                // console.log(response);
                 if (response.status !== 200) {
                     this.game.player1.showErrorMsg(response.message)
                 }
@@ -138,7 +138,7 @@ export class Client {
 
     receiveDestroyMyDice() {
         this.socket.on("destroyMyDice", (diceInfos) => {
-            console.log(diceInfos);
+            // console.log(diceInfos);
             const animationDuration = this.game.animation.explodeDice(
                 this.game.player1.id,
                 diceInfos.columnId,
@@ -186,7 +186,7 @@ export class Client {
             }
 
             $(`#namePlayer${this.game.player2.id}`).text(roomInfo.p2Name)
-            console.log(roomInfo)
+            // console.log(roomInfo)
 
             if (roomInfo.turn) {
                 this.game.animation.addCssAnimation("#potPlayer1", "vibrate")

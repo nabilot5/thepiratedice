@@ -86,7 +86,7 @@ export class Login {
                 },
                 dataType: "json",
                 success: function (response) {
-                    console.log(response)
+                    // console.log(response)
                     $('#signup').fadeOut(400, () => {
                         $('#signin').fadeIn(400)
                     });

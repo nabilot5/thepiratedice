@@ -52,7 +52,7 @@ const game = new Game()
 game.init()
 
 $('#redirectionSolo').on('click', () => {
-    console.log("ok");
+    // console.log("ok");
     const pseudo = localStorage.getItem("pseudo")
     const password = localStorage.getItem("password")
     if (pseudo !== null && password !== null) {
