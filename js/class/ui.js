@@ -99,29 +99,8 @@ export class Ui {
     }
 
     restartGame() {
-        // let img = document.createElement('img');
-
-        // img.setAttribute('id', 'begin');
-        // img.src = 'assets/animationsEffect/begin.png';
-        // img.style.zIndex = 10;
-
-        // setInterval(() => {
-        //     img.src = '';
-        // }, 1000);
-
         this.game.sound.play('beginSong', 0.09)
-
-        // document.getElementById('background').append(img);
-
         this.endMenu.style = ""
-
-        for (let i = 1; i <= 3; i++) {
-            for (let j = 1; j <= 3; j++) {
-                document.getElementById(`player${this.game.player1.id}-col${i}-case-${j}`).classList.remove('vibrate');
-                document.getElementById(`player${this.game.player2.id}-col${i}-case-${j}`).classList.remove('vibrate');
-            }
-        }
-
         this.resetGrid()
         this.resetScore()
     }

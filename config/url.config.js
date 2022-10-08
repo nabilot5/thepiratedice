@@ -4,10 +4,10 @@ const url_online_server = "https://serve.alwaysdata.net"
 // server
 export const url_server = window.location.hostname === "127.0.0.1" ? url_local_server : url_online_server
 export const url_player_server = `${url_server}/players`
-// console.log(url_server);
 
 // api
 export const url_api = `${url_server}/api`
+// console.log(url_api);
 
 const url_auth = `${url_api}/auth`
 const url_rating = `${url_api}/rating`

@@ -89,6 +89,7 @@ export class Inventory {
     choiceBonus() {
         $("#inventory-items button").each((index, element) => {
             $(element).on("click", () => {
+                console.log('choice');
                 this.game.client.sendBonusChoice(
                     $(element).attr("value")
                 )
@@ -96,7 +97,23 @@ export class Inventory {
         })
     }
 
-    removeBonusChoice() {
+    addBonusCaseControl(playerId) {
+        $(`#grille${playerId} img`).each((index, element) => {
+            const boxCase = $(element)
+
+            if (boxCase.attr("data-value") !== "null") {
+                boxCase.parent().addClass("case-hover")
+
+                boxCase.on("click", () => {
+                    this.game.client.sendPayerBonusCase(boxCase.attr("data-case"))
+                    this.game.animation.removeCssAnimation(`#grille${playerId} > div`, "vibrate")
+                    this.removeBonusCaseControl()
+                })
+            }
+        })
+    }
+
+    removeBonusCaseControl() {
         for (let grille = 1; grille <= 2; grille++) {
             $(`#grille${grille} img`).each((index, element) => {
                 $(element)

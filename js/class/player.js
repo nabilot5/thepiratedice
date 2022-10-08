@@ -12,7 +12,7 @@ export class Player extends Inventory {
     }
 
     refreshColumn(columnId) {
-        this.sortColumn(columnId).forEach((dice, nbCase) => {
+        this.sortColumn(columnId).forEach((dice, caseId) => {
             let imgSrc = "#"
             let dataSet = "null"
 
@@ -21,19 +21,20 @@ export class Player extends Inventory {
                 dataSet = dice
             }
 
-            const imgCase = $(`#player${this.id}-col${columnId}-case-${nbCase + 1} img`)
+            const imgCase = $(`#player${this.id}-col${columnId}-case-${caseId + 1} img`)
 
             imgCase.attr("data-value", dataSet)
             imgCase.attr("src", imgSrc)
         })
+
+        this.addEffect(columnId)
     }
 
     sortColumn(columnId) {
-        let columnValue = this.getFormatColumn(columnId)
-        columnValue = columnValue.filter(caseValue => caseValue !== "null")
-        const nbOfNullCase = 3 - columnValue.length
+        let columnValue = this.getFormatColumn(columnId).filter(caseValue => caseValue !== "null")
+        columnValue = this.id === 2 ? columnValue.reverse() : columnValue
 
-        for (let index = 0; index < nbOfNullCase; index++) {
+        for (let index = 3 - columnValue.length; index > 0; index--) {
             columnValue.push("null")
         }
 
@@ -53,8 +54,6 @@ export class Player extends Inventory {
     refreshScoreColumn(columnId) {
         const scoreColumn = this.evalScoreColumn(columnId)
 
-        this.addEffect(columnId)
-
         if (scoreColumn > 0) {
             $(`#totalScore${this.id}Column${columnId} p`).html(scoreColumn)
         } else {
@@ -63,11 +62,7 @@ export class Player extends Inventory {
     }
 
     evalScoreColumn(columnId) {
-        const countDices = this.getFormatColumn(columnId).reduce((acc, value) => ({
-            ...acc,
-            [value]: (acc[value] || 0) + 1
-        }), {})
-
+        const countDices = this.countDices(columnId)
         let totalScoreOfColumn = 0
 
         for (let dice in countDices) {
@@ -80,6 +75,13 @@ export class Player extends Inventory {
         return totalScoreOfColumn
     }
 
+    countDices(columnId) {
+        return this.getFormatColumn(columnId).reduce((acc, value) => ({
+            ...acc,
+            [value]: (acc[value] || 0) + 1
+        }), {})
+    }
+
     getFormatColumn(columnId) {
         let formatColumn = []
 
@@ -89,19 +91,6 @@ export class Player extends Inventory {
             })
 
         return formatColumn
-    }
-
-    checkVibrateClass(id, col) {
-        for (let cell = 1; cell <= 3; cell++) {
-            let VibrateClass = document.getElementById(`player${id}-col${col}-case-${cell}`).getAttribute('class');
-            if (VibrateClass === 'vibrate') {
-                document.getElementById(`player${id}-col${col}-case-${cell}`).classList.remove('vibrate');
-                document.getElementById(`player${id}-col${col}-case-${cell}`).classList.add('vibrate');
-            }
-            else {
-                document.getElementById(`player${id}-col${col}-case-${cell}`).classList.add('vibrate');
-            }
-        }
     }
 
     initControl() {
@@ -135,15 +124,29 @@ export class Player extends Inventory {
     }
 
     addEffect(columnId) {
-        const countDices = this.getFormatColumn(columnId).reduce((acc, value) => ({ ...acc, [value]: (acc[value] || 0) + 1 }), {})
-
+        const countDices = this.countDices(columnId)
         for (let element in countDices) {
-            if (element !== "null" && countDices[element] > 1) {
-                $(`#player${this.id}-col${columnId} img[data-value=${element}]`).parent().removeClass('vibrate')
-                setTimeout(() => {
-                    $(`#player${this.id}-col${columnId} img[data-value=${element}]`).parent().addClass('vibrate')
-                }, 100)
-            }
+            const diceCase = $(`#player${this.id}-col${columnId} img[data-value=${element}]`).parent()
+
+            diceCase.each((index, html) => {
+                const htmlCase = $(html)
+                const htmlCaseId = `#${htmlCase.attr("id")}`
+
+                if (element !== "null" && countDices[element] > 1) {
+                    if (htmlCase.hasClass("vibrate")) {
+                        this.game.animation.removeCssAnimation(htmlCaseId, "vibrate")
+                        htmlCase.width()
+                    }
+
+                    this.game.animation.addCssAnimation(htmlCaseId, "vibrate")
+                }
+
+                else {
+                    if (htmlCase.hasClass("vibrate")) {
+                        this.game.animation.removeCssAnimation(htmlCaseId, "vibrate")
+                    }
+                }
+            })
         }
     }
 

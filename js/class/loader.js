@@ -16,10 +16,10 @@ export class Loader {
                 <div></div>
                 <div></div>
             </div>
-            <p class="text-color-light-white">${msg}</p>
+            <p>${msg}</p>
         `
 
-        document.body.appendChild(loader)
+        document.querySelector("main").appendChild(loader)
     }
 
     remove() {

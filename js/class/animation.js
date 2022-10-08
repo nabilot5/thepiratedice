@@ -12,11 +12,11 @@ export class Animation extends Sound {
 
         caseId.forEach(nbCase => {
             const imgCase = $(`#player${playerId}-col${columnId}-case-${nbCase} img`)
-            imgCase.parent().removeClass('vibrate')
 
             imgCase.attr("data-value", "null")
 
             setTimeout(() => {
+                imgCase.parent().removeClass('vibrate')
                 this.overlapPlay("boom", 0.2, false)
                 imgCase.attr("src", "#")
                     .attr("src", "assets/animationsEffect/explosion.png")

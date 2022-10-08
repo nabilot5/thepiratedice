@@ -2,48 +2,41 @@ import { url_shopCategory, url_basicPurchase, url_playerInfos } from "../../conf
 
 export class Shop {
     constructor() {
-        this.bonusId = "bonus-items"
-        this.purchaseWithCoinBtn = "#bonus-items button"
-
-        this.executionBtn()
+        this.tooltip()
+        this.recoverDataPlayer()
     }
 
-    recoverData(section, html) {
+    recoverData(section) {
         $.ajax({
             type: "POST",
             url: url_shopCategory,
             data: { category: section },
             dataType: "json",
-            success: function (response) {
-                this.addAllItems(response, html)
+            success: function (allItems) {
+                allItems.forEach(item => {
+                    this.addItems(item.imgUrl, item.product, item.description, item.basicPrice, item.id)
+                })
+                this.purchaseWithBasicCoin()
             }.bind(this)
         })
     }
 
     showShop() {
-        this.recoverData("bonus", "bonus-items")
-        this.recoverData("gold", 'coin-items')
-        this.recoverData("emot", 'emots-items')
-        this.recoverData("icon", 'icons-items')
-        this.recoverData("skin", 'skin-items')
-    }
+        const section = ['gold', 'skin', 'icon', 'emot', 'bonus']
+        section.forEach(element => {
+            $(`#${element}-btn`).on('click', () => {
+                $(`#content-items`).fadeOut(0)
+                $(`#content-items`).empty()
+                $(`#content-items`).fadeIn(1000)
+                this.recoverData(element)
+            })
 
-    addAllItems(allItems, html) {
-        this.recoverDataPlayer()
-        const content = document.createElement('div')
-        content.setAttribute('id', html)
-        content.setAttribute('class', 'content-menu hide')
-        allItems.forEach(item => {
-            document.getElementById('bgPanel').append(content)
-            this.addItems(item.imgUrl, item.product, item.description, item.basicPrice, item.id, html)
         })
-
-        this.purchaseWithBasicCoin(html)
     }
 
-    addItems(imgLink, name, description, price, productId, html) {
-        if (html === 'coin-items') {
-            $(`#${html}`).append(`
+    addItems(imgLink, name, description, price, productId) {
+        if (productId == "6" || productId == "7") {
+            $(`#content-items`).append(`
             <button id="items-btn" type="button" value="${productId}" style="background-image:url('${imgLink}');" data-tooltip="${description}">
                 <p>${name}</p>
                 <h3>${price} €</h3>
@@ -51,23 +44,22 @@ export class Shop {
             `)
         }
         else {
-            $(`#${html}`).append(`
+            $(`#content-items`).append(`
             <button  id="items-btn" type="button" value="${productId}" style="background-image:url('${imgLink}');" data-tooltip="${description}">
                 <p>${name}</p>
                 <h3>${price}<img id="coin-icone" src="https://ik.imagekit.io/mbo2hq52r/assets/coin_JK98uHaKwy.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664045674332" alt=""></h3>
             </button>
             `)
         }
-        this.tooltip()
+
     }
 
-    purchaseWithBasicCoin(html) {
-        this.recoverDataPlayer()
-        $(`#${html} button`).each((index, element) => {
-            $(element).on("click", () => {
-                const btnVal = $(element).val()
+    purchaseWithBasicCoin() {
+        $(`#content-items button`).each((index, button) => {
+            $(button).on("click", () => {
+                this.recoverDataPlayer()
+                const btnVal = $(button).val()
                 if (btnVal >= 3 && btnVal <= 5) {
-
                     $.ajax({
                         type: "POST",
                         url: url_basicPurchase,
@@ -77,16 +69,11 @@ export class Shop {
                             productId: btnVal
                         },
                         dataType: "json",
-                        success: function (response) {
-                        },
-                        error: (xhr, ajaxOptions, thrownError) => {
-                        }
                     })
                 }
             })
         })
     }
-
 
     recoverDataPlayer() {
         $.ajax({
@@ -98,27 +85,16 @@ export class Shop {
             },
             dataType: "json",
             success: function (response) {
-                $(`#coin-stat-btn`).attr('value', `${response.basicCoin}`)
+                if (response.basicCoin > 999 && response.basicCoin < 999999) {
+                    $(`#coin-stat-btn`).html(`${eval(Math.round(response.basicCoin / 1000))}K`)
+                }
+                else if (response.basicCoin > 999999) {
+                    $(`#coin-stat-btn`).html(`${eval(Math.round(response.basicCoin / 1000000))}M`)
+                }
+                else {
+                    $(`#coin-stat-btn`).html(`${response.basicCoin}`)
+                }
             }.bind(this)
-        })
-    }
-
-    executionBtn() {
-        this.selectBtn("bonus")
-        this.selectBtn("emots")
-        this.selectBtn("icons")
-        this.selectBtn("skin")
-        this.selectBtn("coin")
-    }
-
-    selectBtn(type) {
-        $(`#${type}-btn`).on('click', () => {
-            $("#bonus-items").fadeOut(400)
-            $("#emots-items").fadeOut(400)
-            $("#icons-items").fadeOut(400)
-            $("#skin-items").fadeOut(400)
-            $("#coin-items").fadeOut(400)
-            $(`#${type}-items`).fadeIn(400)
         })
     }
 

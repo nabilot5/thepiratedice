@@ -43,6 +43,9 @@ export class Client {
     }
 
     sendColumnChoice(columnId) {
+        this.game.player1.removeBonusCaseControl()
+        this.game.animation.removeCssAnimation("#grille1 > div", "vibrate")
+        this.game.animation.removeCssAnimation("#grille2 > div", "vibrate")
         this.socket.emit("playerColumnChoice", columnId)
     }
 
@@ -57,7 +60,6 @@ export class Client {
 
             // callback
             (response) => {
-                // console.log(response);
                 if (response.status !== 200) {
                     this.game.player1.showErrorMsg(response.message)
                 }
@@ -66,29 +68,21 @@ export class Client {
 
     receiveBonusCaseChoice() {
         this.socket.on("bonusCaseChoise", (playerId) => {
-            this.game.player1.removeBonusChoice()
+            this.game.player1.removeBonusCaseControl()
             this.game.animation.addGridSelector(playerId, "vibrate")
-
-            $(`#grille${playerId} img`).each((index, element) => {
-                const boxCase = $(element)
-
-                if (boxCase.attr("data-value") !== "null") {
-                    boxCase.parent().addClass("case-hover")
-                    boxCase.on("click", () => {
-                        this.socket.emit(
-                            "playerBonusCase",
-                            {
-                                caseId: boxCase.attr("data-case"),
-                                pseudo: localStorage.getItem("pseudo"),
-                                password: localStorage.getItem("password")
-                            }
-                        )
-
-                        this.game.player1.removeBonusChoice()
-                    })
-                }
-            })
+            this.game.player1.addBonusCaseControl(playerId)
         })
+    }
+
+    sendPayerBonusCase(caseId) {
+        this.socket.emit(
+            "playerBonusCase",
+            {
+                caseId,
+                pseudo: localStorage.getItem("pseudo"),
+                password: localStorage.getItem("password")
+            }
+        )
     }
 
     receiveMyDice() {
@@ -119,6 +113,7 @@ export class Client {
             this.game.player2.refreshScoreColumn(p2GridInfos.columnId)
             this.game.player2.refreshTotalScore()
             this.game.animation.addCssAnimation("#potPlayer1", "vibrate")
+            this.game.player2.addEffect(p2GridInfos.columnId)
         })
     }
 
@@ -133,12 +128,12 @@ export class Client {
 
             this.game.player1.refreshScoreColumn(p1GridInfos.columnId)
             this.game.player1.refreshTotalScore()
+            this.game.player1.addEffect(p1GridInfos.columnId)
         })
     }
 
     receiveDestroyMyDice() {
         this.socket.on("destroyMyDice", (diceInfos) => {
-            // console.log(diceInfos);
             const animationDuration = this.game.animation.explodeDice(
                 this.game.player1.id,
                 diceInfos.columnId,
@@ -186,7 +181,7 @@ export class Client {
             }
 
             $(`#namePlayer${this.game.player2.id}`).text(roomInfo.p2Name)
-            // console.log(roomInfo)
+            console.log(roomInfo)
 
             if (roomInfo.turn) {
                 this.game.animation.addCssAnimation("#potPlayer1", "vibrate")
@@ -219,7 +214,6 @@ export class Client {
 
                 else {
                     this.game.ui.showBetErr(response.msg)
-                    console.log(response.msg);
                 }
             }
         )

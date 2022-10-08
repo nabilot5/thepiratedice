@@ -26,7 +26,7 @@ window.addEventListener('load', function () {
     setTimeout(() => {
         loader.remove()
     }, 500)
-    $("#wrapper").fadeIn(400)
+    $("#index").fadeIn(400)
 
     var SeaSound = document.getElementById('SeaSound')
     SeaSound.volume = 0.1
@@ -50,7 +50,6 @@ const game = new Game()
 game.init()
 
 $('#redirectionSolo').on('click', () => {
-    // console.log("ok");
     const pseudo = localStorage.getItem("pseudo")
     const password = localStorage.getItem("password")
     if (pseudo !== null && password !== null) {

@@ -13,53 +13,33 @@
 		<title>The Pirate's Dice</title>
 	</head>
 	<body>
-
-		<div class="hide">
-			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice1.png?ik-sdk-version=javascript-1.4.3" alt="">
-			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice2.png?ik-sdk-version=javascript-1.4.3" alt="">
-			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice3.png?ik-sdk-version=javascript-1.4.3" alt="">
-			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice4.png?ik-sdk-version=javascript-1.4.3" alt="">
-			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice5.png?ik-sdk-version=javascript-1.4.3" alt="">
-			<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice6.png?ik-sdk-version=javascript-1.4.3" alt="">
-			<img src="./assets/animationsEffect/explosion.png" alt="">
-		</div>
-
 		<div id="wrapper" class="w-100 h-100">
 			<main class="w-100 h-100">
-				<div id="index">
-						<header class="hide">
-							<div id="brand">THE PIRATE'S DICES</div>
-							<nav>
-								<div id="nav">
-									<button class="menu-principal-btn" type="button">MENU PRINCIPAL</button>
-									<button class="leaderboard-btn" type="button">CLASSEMENT</button>
-									<button class="shop-btn" type="button">BOUTIQUE</button>
-								</div>
-							</nav>
-			
-							<div id="hamburger-icon" onclick="toggleMobileMenu(this)">
-								<div class="bar1"></div>
-								<div class="bar2"></div>
-								<div class="bar3"></div>
-								<div id="mobile-menu">
-									<button class="menu-principal-btn" type="button">MENU PRINCIPAL</button>
-									<button class="leaderboard-btn" type="button">CLASSEMENT</button>
-									<button class="shop-btn" type="button">BOUTIQUE</button>
-								</div>
+				<div id="index" class="w-100 h-100 hide">
+					<header class="hide">
+						<div id="brand">THE PIRATE'S DICES</div>
+						<nav>
+							<div id="nav">
+								<button class="menu-principal-btn" type="button">MENU PRINCIPAL</button>
+								<button class="leaderboard-btn" type="button">CLASSEMENT</button>
+								<button class="shop-btn" type="button">BOUTIQUE</button>
 							</div>
-						</header>
-			
-						<script>
-							function toggleMobileMenu(menu) {
-								menu.classList.toggle('open');
-							}
-						</script>
+						</nav>
 
-					<div id="index-bg">
+						<div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+							<div class="bar1"></div>
+							<div class="bar2"></div>
+							<div class="bar3"></div>
+							<div id="mobile-menu">
+								<button class="menu-principal-btn" type="button">MENU PRINCIPAL</button>
+								<button class="leaderboard-btn" type="button">CLASSEMENT</button>
+								<button class="shop-btn" type="button">BOUTIQUE</button>
+							</div>
+						</div>
+					</header>
+
+					<div id="index-bg" class="w-100 h-100 pos-rel">
 						<img id="backg" class="img-fit pos-abs z-index--1" src="" alt="">
-						<!-- <div id="logo" class="pos-abs z-index--1">
-							<img class="img-fit" src="https://ik.imagekit.io/iq52ivedsj/assets/logo-FINAL-04_EKK-kI02J.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986927928" alt="">
-						</div> -->
 					</div>
 
 					<section id="login-menu" class="page-menu pos-abs bottom-0 hide">
@@ -112,14 +92,15 @@
 					</section>
 
 					<section id="menu-principal" class="page-menu pos-abs bottom-0 hide">
-						<div class="w-100 h-100 f-column f-jc-sp-bw">
+						<div
+							class="w-100 h-100 f-column f-jc-sp-bw">
 							<!-- <h1 id="id-player" class="txt-center"></h1> -->
 							<div id="mode-menu-container" class="w-100 h-100 f-row f-jc-end f-ai-end">
 								<div id="mode-menu" class="f-column">
-									<button id="redirectionSolo" class="btn btn-transparent">
+									<button id="redirectionSolo" class="btn btn-transparent w-100">
 										<img class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/solo_WHb3hxECH.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986941093" alt="">
 									</button>
-									<button id="redirectionMulti" class="btn btn-transparent">
+									<button id="redirectionMulti" class="btn btn-transparent w-100">
 										<img class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/multi_G6S-smL65z.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986940676" alt="">
 									</button>
 								</div>
@@ -129,37 +110,32 @@
 
 					<section id="leaderboard" class="page-menu pos-abs bottom-0 hide">
 						<div class="container">
-							<!-- <div id="leaderboard-player-info" class="color-white">
-								<div class="f-row f-jc-sp-around f-wrap">
-									<p id="leaderboard-player-pseudo"></p>
-									<p id="leaderboard-player-rating">1/10</p>
-								</div>
-								<p id="leaderboard-player-elo">1510</p>
-							</div> -->
-							<ul class="responsive-table">
-							</ul>
-						  </div>
+							<ul class="responsive-table"></ul>
+						</div>
 					</section>
 
 					<section id="shop" class="page-menu pos-abs bottom-0 hide">
 						<div id="shop-bonus">
 							<div id="panel">
-								<input id="coin-btn" type="button" value="Acheter des pièces"><img id="coin-img" src="https://ik.imagekit.io/mbo2hq52r/assets/buy-po_CAYURY217.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664791779192" alt=""></input>
-								<button id="skin-btn" type="button">Dés</button>
-								<button id="icons-btn" type="button">Icones</button>
-								<button id="emots-btn" type="button">Emotes</button>
-								<button id="bonus-btn" type="button">Bonus</button>
-								<input id="coin-stat-btn" type="button"></input>
+								<!-- <img id="coin-img" src="https://ik.imagekit.io/mbo2hq52r/assets/buy-po_CAYURY217.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664791779192" alt=""> -->
+								<p id="gold-btn">Acheter des pièces</p>
+								<button id="skin-btn" type="button"><span>Dés</span></button>
+								<button id="icon-btn" type="button"><span>Icones</span></button>
+								<button id="emot-btn" type="button"><span>Emotes</span></button>
+								<button id="bonus-btn" type="button"><span>Bonus</span></button>
+								<p id="coin-stat-btn"></p>
 							</div>
-							<div id="bgPanel"></div>
+						</div>
+						<div id="bgPanel">
+							<div id="content-items" class="content-menu hide"></div>
 						</div>
 					</section>
 				</div>
 
 				<section id="game" class="w-100 h-100 pos-rel hide">
-					<img id="fond" class="img-fit pos-abs z-index--1" src="https://ik.imagekit.io/iq52ivedsj/assets/fond_On7kzCaht.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662987059086">
-					<img id="nappe" class="img-fit pos-abs z-index--1" src="https://ik.imagekit.io/iq52ivedsj/assets/nappe_dxy4e_8vX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986991309">
-					<img id="cadre" class="img-fit pos-abs z-index--1" src="https://ik.imagekit.io/iq52ivedsj/assets/cadre_loHnyB1zn.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986959680">
+					<img id="fond" class="img-fit pos-abs z-index--1" src="https://ik.imagekit.io/iq52ivedsj/assets/fond_On7kzCaht.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662987059086" alt="">
+					<img id="nappe" class="img-fit pos-abs z-index--1" src="https://ik.imagekit.io/iq52ivedsj/assets/nappe_dxy4e_8vX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986991309" alt="">
+					<img id="cadre" class="img-fit pos-abs z-index--1" src="https://ik.imagekit.io/iq52ivedsj/assets/cadre_loHnyB1zn.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986959680" alt="">
 
 					<div id="bet" class="w-100 h-100 h-mx-100 dark-bg pos-abs z-index-1">
 						<div id="bet-form" class="w-100 h-100 f-column-center">
@@ -233,10 +209,10 @@
 					<div id="end-menu" class="h-100 w-100 pos-abs dark-bg z-index-1 hide">
 						<div class="w-100 h-100 f-column-center">
 							<div id="parchemin" class="pos-rel h-mx-100">
-								<img id="scoreImg" class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/score_tfEPzX4ZR.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662987039605">
+								<img id="scoreImg" class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/score_tfEPzX4ZR.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662987039605" alt="">
 								<p id="scoreMenu" class="pos-abs txt-center">0 - 0</p>
 								<div id="end-menu-quit" class="pos-abs">
-									<img id="quitBtn" class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/quitBtn_X1x10G28x.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986933210">
+									<img id="quitBtn" class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/quitBtn_X1x10G28x.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986933210" alt="">
 								</div>
 							</div>
 						</div>
@@ -246,7 +222,7 @@
 
 						<div id="ui-haut">
 							<div class="pos-rel f-column-center">
-								<img class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/rollhaut_i40Hx7Lzp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986947340">
+								<img class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/rollhaut_i40Hx7Lzp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986947340" alt="">
 								<div class="pos-abs w-35">
 									<img id="potPlayer2" class="choice-dice img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/dices/choseDice_ftS4YvZbV.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986918825" alt="">
 								</div>
@@ -411,7 +387,7 @@
 
 						<div id="ui-bas">
 							<div class="pos-rel f-column-center">
-								<img class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/rollbas_IgcEs8UX-.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986946600">
+								<img class="img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/rollbas_IgcEs8UX-.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986946600" alt="">
 								<div class="pos-abs w-35">
 									<img id="potPlayer1" class="choice-dice img-res" src="https://ik.imagekit.io/iq52ivedsj/assets/dices/choseDice_ftS4YvZbV.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662986918825" alt="">
 								</div>
@@ -436,7 +412,23 @@
 				<audio id="rulesBookSound" src="assets/soundsEffect/rulesBookSound.mp3"></audio>
 				<audio id="diceSound" src="assets/soundsEffect/diceDrop.mp3"></audio>
 				<audio id="aiSoundDice" src="assets/soundsEffect/diceDrop.mp3"></audio>
+
+				<div class="hide">
+					<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice1.png?ik-sdk-version=javascript-1.4.3" alt="">
+					<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice2.png?ik-sdk-version=javascript-1.4.3" alt="">
+					<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice3.png?ik-sdk-version=javascript-1.4.3" alt="">
+					<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice4.png?ik-sdk-version=javascript-1.4.3" alt="">
+					<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice5.png?ik-sdk-version=javascript-1.4.3" alt="">
+					<img src="https://ik.imagekit.io/iq52ivedsj/assets/dices/Dice6.png?ik-sdk-version=javascript-1.4.3" alt="">
+					<img src="./assets/animationsEffect/explosion.png" alt="">
+				</div>
+
+				<script>
+					function toggleMobileMenu(menu) {
+						menu.classList.toggle('open');
+						}
+				</script>
 			</footer>
-		</body>
+		</div>
 	</body>
 </html>

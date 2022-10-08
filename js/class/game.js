@@ -48,7 +48,7 @@ export class Game {
                 this.client.joinRoom(mode, this.player1.name)
                 break;
 
-            default: this.client.joinRoom(mode, this.player1.name); break;
+            default: break;
         }
     }
 
